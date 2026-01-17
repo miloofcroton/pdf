@@ -1,0 +1,22 @@
+# MAC
+.DS_Store
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# ruff
+.ruff_cache
+
+# env variables
+.env
+
+# other
+instance
