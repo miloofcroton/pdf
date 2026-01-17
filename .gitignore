@@ -20,3 +20,6 @@ wheels/
 
 # other
 instance
+
+# claude
+.claude
