@@ -7,3 +7,15 @@ python.uv_venv_auto = true
 [tasks.setup_db]
 run = "uv run --env-file .env -- flask --app app.web init-db"
 description = "Set up database with flask"
+
+[tasks.start_server]
+run = "uv run --env-file .env -- inv dev"
+description = "run the python server"
+
+[tasks.start_worker]
+run = "uv run --env-file .env -- inv devworker"
+description = "run the worker"
+
+[tasks.start_redis]
+run = "uv run --env-file .env -- redis-server"
+description = "run redis"
