@@ -1,16 +1,18 @@
 # First Time Setup
 
-## Using Pipenv
+## Using Uv
 
 ```
 # Install dependencies
-pipenv install
+mise activate
+mise install
+uv install
 
 # Create a virtual environment
-pipenv shell
+source .venv/bin/activate
 
 # Initialize the database
-flask --app app.web init-db
+uv flask --app app.web init-db
 
 ```
 
