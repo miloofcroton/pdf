@@ -17,34 +17,34 @@ uv sync
 source .venv/bin/activate
 ```
 
-
-To initiate or reset the database:
+Initiate or reset the database:
 
 ```bash
 mise run setup
 ```
 
-To run the main python server:
+Run the services in parallel:
+
+```bash
+mise run server ::: worker ::: uploader
+```
+
+## Other handy commands
+
+To run the main python server separately:
 
 ```bash
 mise run server
 ```
 
-
-To run the worker:
-
-```bash
-mise run worker
-```
-
-To run the uploader:
+To run the worker separately:
 
 ```bash
 mise run worker
 ```
 
-To run Redis:
+To run the uploader separately:
 
 ```bash
-redis-server
+mise run worker
 ```
