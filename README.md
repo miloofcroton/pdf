@@ -1,73 +1,50 @@
-# First Time Setup
+# PDF Tool
 
-## Using Uv
+## First Time Setup
 
-```
-# Install dependencies
+Install core dependencies:
+
+```bash
 mise activate
 mise install
 uv install
+```
 
-# Create a virtual environment
+Create a virtual environment:
+
+```bash
+uv sync
 source .venv/bin/activate
-
-# Initialize the database
-uv flask --app app.web init-db
-
 ```
 
-# Running the app
 
-There are three separate processes that need to be running for the app to work: the server, the worker, and Redis.
+To initiate or reset the database:
 
-If you stop any of these processes, you will need to start them back up!
-
-Commands to start each are listed below. If you need to stop them, select the terminal window the process is running in and press Control-C
-
-### To run the Python server
-
-Open a new terminal window and create a new virtual environment:
-
-```
-pipenv shell
+```bash
+mise run setup
 ```
 
-Then:
+To run the main python server:
 
-```
-inv dev
-```
-
-### To run the worker
-
-Open a new terminal window and create a new virtual environment:
-
-```
-pipenv shell
+```bash
+mise run server
 ```
 
-Then:
 
-```
-inv devworker
+To run the worker:
+
+```bash
+mise run worker
 ```
 
-### To run Redis
+To run the uploader:
 
+```bash
+mise run worker
 ```
+
+To run Redis:
+
+```bash
 redis-server
-```
-
-### To reset the database
-
-Open a new terminal window and create a new virtual environment:
-
-```
-pipenv shell
-```
-
-Then:
-
-```
-flask --app app.web init-db
 ```

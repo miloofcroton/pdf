@@ -21,5 +21,5 @@ run = "uv run --env-file .env -- inv uploader"
 description = "run the uploader"
 
 [tasks.redis]
-run = "uv run --env-file .env -- redis-server"
+run = "redis-server"
 description = "run redis"
