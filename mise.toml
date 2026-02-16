@@ -4,7 +4,7 @@ uv = 'latest'
 [settings]
 python.uv_venv_auto = true
 
-[tasks.setup_db]
+[tasks.setup]
 run = "uv run --env-file .env -- flask --app app.web init-db"
 description = "Set up database with flask"
 

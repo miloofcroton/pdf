@@ -5,9 +5,8 @@ import os
 
 app = Flask(__name__)
 CORS(app)
-# Use absolute path relative to project root (two levels up from this file)
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-UPLOAD_FOLDER = os.path.join(PROJECT_ROOT, "uploads")
+# Use absolute path in app/uploader/uploads
+UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "uploads")
 ALLOWED_EXTENSIONS = {"pdf"}
 
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
