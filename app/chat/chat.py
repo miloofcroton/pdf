@@ -2,15 +2,15 @@ from app.chat.models import ChatArgs
 
 
 def build_chat(chat_args: ChatArgs):
-    """
-    :param chat_args: ChatArgs object containing
-        conversation_id, pdf_id, metadata, and streaming flag.
+  """
+  :param chat_args: ChatArgs object containing
+      conversation_id, pdf_id, metadata, and streaming flag.
 
-    :return: A chain
+  :return: A chain
 
-    Example Usage:
+  Example Usage:
 
-        chain = build_chat(chat_args)
-    """
+      chain = build_chat(chat_args)
+  """
 
-    pass
+  pass

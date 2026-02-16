@@ -18,3 +18,12 @@ def devworker(ctx):
     pty=os.name != "nt",
     env={"APP_ENV": "development"},
   )
+
+
+@task
+def uploader(ctx):
+  ctx.run(
+    "flask --app app.uploader run --debug --port 8050",
+    pty=os.name != "nt",
+    env={"APP_ENV": "development"},
+  )
