@@ -3,6 +3,7 @@ from langchain.prompts import ChatPromptTemplate
 from langchain.chains import LLMChain
 from langchain.callbacks.base import BaseCallbackHandler
 from queue import Queue
+from threading import Thread
 
 queue = Queue()
 
@@ -19,7 +20,10 @@ prompt = ChatPromptTemplate.from_messages([("human", "{content}")])
 
 class StreamingChain(LLMChain):
   def stream(self, input):
-    self(input)
+    def task():
+      self(input)
+
+    Thread(target=task).start()
     while True:
       token = queue.get()
       yield token
