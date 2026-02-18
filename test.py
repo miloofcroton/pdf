@@ -2,11 +2,14 @@ from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain.chains import LLMChain
 from langchain.callbacks.base import BaseCallbackHandler
+from queue import Queue
+
+queue = Queue()
 
 
 class StreamingHandler(BaseCallbackHandler):
   def on_llm_new_token(self, token, **kwargs):
-    pass
+    queue.put(token)
 
 
 chat = ChatOpenAI(streaming=True, callbacks=[StreamingHandler()])
@@ -16,9 +19,10 @@ prompt = ChatPromptTemplate.from_messages([("human", "{content}")])
 
 class StreamingChain(LLMChain):
   def stream(self, input):
-    print(self(input))
-    yield "hi"
-    yield "there"
+    self(input)
+    while True:
+      token = queue.get()
+      yield token
 
 
 chain = StreamingChain(llm=chat, prompt=prompt)
