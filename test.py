@@ -1,17 +1,29 @@
 from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
-from dotenv import load_dotenv
+from langchain.chains import LLMChain
+from langchain.callbacks.base import BaseCallbackHandler
 
-load_dotenv()
 
-chat = ChatOpenAI(streaming=False)
+class StreamingHandler(BaseCallbackHandler):
+  def on_llm_new_token(self, token, **kwargs):
+    pass
 
-prompt = ChatPromptTemplate.from_messages(
-  [
-    ("human", "{content}"),
-  ]
-)
-messages = prompt.format_messages(content="tell me a joke")
 
-for message in chat.stream(messages):
-  print(message.content)
+chat = ChatOpenAI(streaming=True, callbacks=[StreamingHandler()])
+
+prompt = ChatPromptTemplate.from_messages([("human", "{content}")])
+
+
+class StreamingChain(LLMChain):
+  def stream(self, input):
+    print(self(input))
+    yield "hi"
+    yield "there"
+
+
+chain = StreamingChain(llm=chat, prompt=prompt)
+for output in chain.stream(input={"content": "tell me a joke"}):
+  print(output)
+
+# for message in chat.stream(messages):
+#     print(message.content)
