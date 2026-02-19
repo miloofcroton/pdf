@@ -1,4 +1,10 @@
 {
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#2a51f0",
+    "titleBar.activeBackground": "#2a51f0",
+    "titleBar.inactiveBackground": "#2a51f0",
+    "statusBar.background": "#2a51f0"
+  },
   "editor.formatOnSave": true,
   "[python]": {
     "editor.formatOnSave": true,
