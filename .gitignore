@@ -18,8 +18,9 @@ wheels/
 # env variables
 .env
 
-# other
+# state
 instance
+dump.rdb
 
 # claude
 .claude
